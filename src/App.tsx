@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from 'react'
+import './App.css'
+import { FormContext } from './context/FormProvider'
+import FormNavBar from './components/form-nav-bar'
+import FormContent from './components/form-content'
+import FullPageLoader from './components/full-page-loader'
 
-function App() {
+function App () {
+  const {
+    formStep,
+    userData,
+    updateUserData,
+    confirmForm,
+    backToPreviousStep,
+    isLoading
+  } = useContext(FormContext)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {isLoading && <FullPageLoader />}
+      <FormNavBar currentStep={formStep} />
+      <FormContent
+        currentStep={formStep}
+        updateUserData={updateUserData}
+        userData={userData}
+        confirmForm={confirmForm}
+        backToPreviousStep={backToPreviousStep}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
