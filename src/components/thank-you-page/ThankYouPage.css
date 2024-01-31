@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap');
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin-top: 50%;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.message-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+}
+
+.message {
+  border-radius: 30px;
+  background-color: #989E8D;
+  padding: 15px;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 30px;
+  color: #FFF;
+}
+
+.submit-button {
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 30px;
+  color: #FFF;
+}
+
+/* Responsive Design for desktop screens */
+@media (min-width: 768px) {
+  .message-section {
+    flex-direction: row;
+    align-items: end;
+  }
+}
