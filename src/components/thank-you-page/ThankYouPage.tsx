@@ -13,16 +13,16 @@ interface ThankYouProps {
 const ThankYouPage: FunctionComponent<ThankYouProps> = ({ thankyou, userName, endThankYou }: ThankYouProps) => {
   return (
     <Container>
-        <div className="container">
+        <div className="container" id='thank-you-page'>
             <div className="main-content">
                 <div className="message-section">
                     <img alt="" className="avatar" src={katie} />
-                    <div className='message'>
+                    <div className='message' id='thank-you-message'>
                         Hi, {userName}, thank you for submitting the form. We will check and get back to you within 2 business days.
                     </div>
                 </div>
 
-                <Button className='submit-button' onClick={endThankYou}>SUBMIT ANOTHER</Button>
+                <Button className='submit-button' onClick={endThankYou} id='back-to-form-button'>SUBMIT ANOTHER</Button>
             </div>
         </div>
     </Container>
