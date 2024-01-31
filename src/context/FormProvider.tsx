@@ -10,9 +10,10 @@ const CreateProviderValue = () => {
   const [formStep, setFormStep] = useState<number>(1)
   const [userData, setUserData] = useState<User>(new User())
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [thankYouPage, setThankYouPage] = useState<boolean>(false)
 
   const updateFormStep = (updatedUserData: User) => {
-    if (updatedUserData.name && updatedUserData.income) {
+    if (updatedUserData.name && (updatedUserData.income || updatedUserData.income === 0)) {
       setFormStep(2)
     }
     if (updatedUserData.education) {
@@ -34,9 +35,10 @@ const CreateProviderValue = () => {
   const saveAndResetData = async () => {
     try {
       await mockSaveData()
+
       // ADD THANK YOU PAGE HERE
-      setUserData(new User())
-      setFormStep(1)
+      setThankYouPage(true)
+
       setIsLoading(false)
     } catch (e) {
       console.error(e)
@@ -46,6 +48,12 @@ const CreateProviderValue = () => {
   const confirmForm = () => {
     setIsLoading(true)
     saveAndResetData()
+  }
+
+  const endThankYou = () => {
+    setThankYouPage(false)
+    setUserData(new User())
+    setFormStep(1)
   }
 
   const backToPreviousStep = () => {
@@ -59,7 +67,9 @@ const CreateProviderValue = () => {
     updateUserData,
     confirmForm,
     backToPreviousStep,
-    isLoading
+    isLoading,
+    thankYouPage,
+    endThankYou
   }
 }
 
