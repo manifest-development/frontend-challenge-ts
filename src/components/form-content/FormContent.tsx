@@ -5,6 +5,8 @@ import Flex from '../../layout/flex'
 import Button from '../button'
 import Input from '../input'
 import * as Styled from './styles'
+import AvatarImg from '../../assets/katie.png'
+import convertNumber from '../../utils/convertNumber'
 
 interface FormContentProps {
   currentStep: number
@@ -15,7 +17,11 @@ interface FormContentProps {
 }
 
 const FormContent: FunctionComponent<FormContentProps> = ({
-  currentStep, updateUserData, userData, confirmForm, backToPreviousStep
+  currentStep,
+  updateUserData,
+  userData,
+  confirmForm,
+  backToPreviousStep
 }: FormContentProps) => {
   const [localData, setLocalData] = useState(userData)
 
@@ -24,7 +30,10 @@ const FormContent: FunctionComponent<FormContentProps> = ({
   }, [userData])
 
   const submitForm = () => {
-    updateUserData(new User(localData))
+    // Checking if the income is empty or not a number assuming it's a required field and can only be a number
+    if (!Number.isNaN(convertNumber(localData.income))) {
+      updateUserData(new User(localData))
+    }
   }
 
   const updateField = (key: string, value: string) => {
@@ -81,30 +90,61 @@ const FormContent: FunctionComponent<FormContentProps> = ({
           </Flex>
               )
             : (
-                currentStep === 3 && (
-            <Flex flexDirection="column" id="confirmation-page">
+                (currentStep === 3 && (
+            <Flex
+              flexDirection="column"
+              id="confirmation-page"
+            >
               <Styled.FormHeading>Confirmation</Styled.FormHeading>
-              <Flex flexDirection="column" justifyContent="flex-start">
+              <Flex
+                flexDirection="column"
+                justifyContent="flex-start"
+              >
                 <Styled.LineParagraph id="confirmation-name">
-                  <span>Name</span>
-                  :
-                  <strong>{localData.name}</strong>
+                  <span>Name</span>:<strong>{localData.name}</strong>
                 </Styled.LineParagraph>
                 <Styled.LineParagraph id="confirmation-income">
-                  <span>Income</span>
-                  :
-                  <strong>{localData.income}</strong>
+                  <span>Income</span>:<strong>{localData.income}</strong>
                 </Styled.LineParagraph>
                 <Styled.LineParagraph id="confirmation-education">
-                  <span>Education</span>
-                  :
-                  <strong>{localData.education}</strong>
+                  <span>Education</span>:<strong>{localData.education}</strong>
                 </Styled.LineParagraph>
               </Flex>
-              <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">Back</Button>
-              <Button onClick={confirmForm} id="form-confirmation-button">Confirm</Button>
+              <Button
+                onClick={backToPreviousStep}
+                invert
+                id="form-confirmation-back-button"
+              >
+                Back
+              </Button>
+              <Button
+                onClick={confirmForm}
+                id="form-confirmation-button"
+              >
+                Confirm
+              </Button>
             </Flex>
-                )
+                )) ||
+          (currentStep === 4 && (
+            <Flex
+              flexDirection="column"
+              justifyContent="center"
+            >
+              <Styled.Greeting $alignItems="flex-end">
+                <Styled.Avatar src={AvatarImg} />
+                <div id="greeting-msg">
+                  Hi, {userData.name}, thank you for submitting the form. We
+                  will check and get back to you within 2 business days.
+                </div>
+              </Styled.Greeting>
+              <Button
+                onClick={confirmForm}
+                id="form-reset-button"
+              >
+                Submit another
+              </Button>
+            </Flex>
+          ))
               )}
       </Styled.FormContentDiv>
     </Container>
