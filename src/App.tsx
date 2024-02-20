@@ -18,7 +18,7 @@ function App () {
   return (
     <div className="app">
       {isLoading && <FullPageLoader />}
-      <FormNavBar currentStep={formStep} />
+      {formStep <= 3 && <FormNavBar currentStep={formStep} />}
       <FormContent
         currentStep={formStep}
         updateUserData={updateUserData}
