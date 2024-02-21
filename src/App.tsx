@@ -4,6 +4,7 @@ import { FormContext } from './context/FormProvider'
 import FormNavBar from './components/form-nav-bar'
 import FormContent from './components/form-content'
 import FullPageLoader from './components/full-page-loader'
+import ThankYou from './components/thank-you'
 
 function App () {
   const {
@@ -12,20 +13,25 @@ function App () {
     updateUserData,
     confirmForm,
     backToPreviousStep,
-    isLoading
+    isLoading,
+    isSubmitted,
+    resetForm
   } = useContext(FormContext)
 
   return (
     <div className="app">
       {isLoading && <FullPageLoader />}
-      <FormNavBar currentStep={formStep} />
+
+      {!isSubmitted
+        ? <><FormNavBar currentStep={formStep} />
       <FormContent
         currentStep={formStep}
         updateUserData={updateUserData}
         userData={userData}
         confirmForm={confirmForm}
         backToPreviousStep={backToPreviousStep}
-      />
+      /></>
+        : <ThankYou username={userData.name} resetForm={resetForm} />}
     </div>
   )
 }
