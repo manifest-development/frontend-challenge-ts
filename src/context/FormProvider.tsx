@@ -12,7 +12,7 @@ const CreateProviderValue = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const updateFormStep = (updatedUserData: User) => {
-    if (updatedUserData.name && updatedUserData.income) {
+    if (updatedUserData.name && updatedUserData.income !== undefined) {
       setFormStep(2)
     }
     if (updatedUserData.education) {
@@ -31,21 +31,25 @@ const CreateProviderValue = () => {
       setTimeout(res, 1500)
     })
 
-  const saveAndResetData = async () => {
+  const saveData = async () => {
     try {
       await mockSaveData()
-      // ADD THANK YOU PAGE HERE
-      setUserData(new User())
-      setFormStep(1)
+      setFormStep(4)
+      // setUserData(new User())
       setIsLoading(false)
     } catch (e) {
       console.error(e)
     }
   }
 
+  const resetData = (): void => {
+    setUserData(new User())
+    setFormStep(1)
+  }
+
   const confirmForm = () => {
     setIsLoading(true)
-    saveAndResetData()
+    saveData()
   }
 
   const backToPreviousStep = () => {
@@ -59,6 +63,7 @@ const CreateProviderValue = () => {
     updateUserData,
     confirmForm,
     backToPreviousStep,
+    resetData,
     isLoading
   }
 }

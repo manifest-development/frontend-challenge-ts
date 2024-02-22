@@ -5,6 +5,7 @@ import Flex from '../../layout/flex'
 import Button from '../button'
 import Input from '../input'
 import * as Styled from './styles'
+import { Navigate } from 'react-router-dom'
 
 interface FormContentProps {
   currentStep: number
@@ -80,8 +81,8 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             <Button onClick={submitForm} id="form-step-2-next">Next</Button>
           </Flex>
               )
-            : (
-                currentStep === 3 && (
+            : currentStep === 3
+              ? (
             <Flex flexDirection="column" id="confirmation-page">
               <Styled.FormHeading>Confirmation</Styled.FormHeading>
               <Flex flexDirection="column" justifyContent="flex-start">
@@ -105,7 +106,10 @@ const FormContent: FunctionComponent<FormContentProps> = ({
               <Button onClick={confirmForm} id="form-confirmation-button">Confirm</Button>
             </Flex>
                 )
-              )}
+              : (currentStep === 4 && (
+                <Navigate to="/thank-you" replace={true} />
+                )
+                )}
       </Styled.FormContentDiv>
     </Container>
   )
