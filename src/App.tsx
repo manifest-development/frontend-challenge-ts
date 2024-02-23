@@ -23,6 +23,7 @@ function App () {
         currentStep={formStep}
         updateUserData={updateUserData}
         userData={userData}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         confirmForm={confirmForm}
         backToPreviousStep={backToPreviousStep}
       />
