@@ -11,9 +11,9 @@ const ThankYouPage: React.FC = () => {
   return (
     <Container>
       <Styled.ThankYouPageContainer>
-        <div>
+        <div id="thank-you-page">
           <img src={KatieImage} alt="Katie" />
-          <p>Hi, {userData.name}, thank you for submitting the form. We will check and get back to you within 2 business days</p>
+          <p id="thank-you-message">Hi, {userData.name}, thank you for submitting the form. We will check and get back to you within 2 business days</p>
         </div>
         {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <Button onClick={resetData} id="submit-another-button">Submit Another</Button>
