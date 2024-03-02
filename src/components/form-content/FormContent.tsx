@@ -102,7 +102,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
                 </Styled.LineParagraph>
               </Flex>
               <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">Back</Button>
-              <Button onClick={confirmForm} id="form-confirmation-button">Confirm</Button>
+              <Button onClick={submitForm} id="form-confirmation-button">Confirm</Button>
             </Flex>
                 )
               )}
