@@ -2,6 +2,7 @@ import { type FunctionComponent, type PropsWithChildren, type CSSProperties } fr
 import * as Styled from './styles'
 
 interface FlexProps extends PropsWithChildren {
+  gap?: CSSProperties['gap']
   flexDirection?: CSSProperties['flexDirection']
   justifyContent?: CSSProperties['justifyContent']
   alignItems?: CSSProperties['alignItems']
@@ -9,6 +10,7 @@ interface FlexProps extends PropsWithChildren {
 }
 
 const Flex: FunctionComponent<FlexProps> = ({
+  gap,
   flexDirection = 'row',
   justifyContent = 'space-between',
   alignItems = 'center',
@@ -20,6 +22,7 @@ const Flex: FunctionComponent<FlexProps> = ({
       $flexDirection={flexDirection}
       $justifyContent={justifyContent}
       $alignItems={alignItems}
+      $gap={gap}
       {...props}
     >
       {children}
