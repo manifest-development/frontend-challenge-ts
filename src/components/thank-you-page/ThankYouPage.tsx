@@ -1,9 +1,9 @@
 import { type FunctionComponent } from 'react'
 import Button from '../button'
+import Container from '../../layout/container'
+import Flex from '../../layout/flex'
 import profileImageSrc from '../../assets/katie.png'
 import * as Styled from './styles'
-import Flex from '../../layout/flex'
-import Container from '../../layout/container'
 
 interface ThankYouPageProps {
   userName: string
