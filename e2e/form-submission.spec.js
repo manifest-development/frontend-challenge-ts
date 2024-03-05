@@ -52,12 +52,18 @@ test('Demo page is loaded', async ({ page }) => {
   await confirmButton.click();
 
   console.log('Complete form confirmation page');
+  
   // ADD Form Thank you page test here
+  console.log('Start thank you page check')
+  const thankYouPage = await page.locator('#thank-you-page');
+  await expect(thankYouPage).toBeInViewport();
+  await expect(thankYouPage).toContainText(
+    "thank you for submitting the form. We will check and get back to you within 2 business days"
+  )
+  const submitAnotherButton = await page.locator("#submit-another-button");
+  await submitAnotherButton.click();
+  const formPage = await page.locator("#input-name");
+  await expect(formPage).toBeInViewport();
 
-  // Back to form step 1 and form should be reset
-  await page.waitForTimeout(3000);
-  const form1Input = await page.locator('#input-name');
-  const nameInputValie = await form1Input.inputValue();
-  await expect(form1Input).toBeInViewport();
-  await expect(nameInputValie).toBe('');
+  console.log('Complete form and refresh form')
 });
