@@ -11,7 +11,7 @@ const ThankYou: FunctionComponent = () => {
   }
 
   return (
-    <Styled.ThankYouWrapper>
+    <Styled.ThankYouWrapper id='thank-you-page'>
       <Styled.AgentBox>
         <Styled.AgentImage>
           <img src={AgentProfilePicture} alt="Agent Katie"></img>
@@ -21,7 +21,7 @@ const ThankYou: FunctionComponent = () => {
           and get back to you within 2 business days.
         </Styled.AgentText>
       </Styled.AgentBox>
-      <Button onClick={handleSubmitAnother}>SUBMIT ANOTHER</Button>
+      <Button onClick={handleSubmitAnother} id='submit-another-button'>SUBMIT ANOTHER</Button>
     </Styled.ThankYouWrapper>
   )
 }
