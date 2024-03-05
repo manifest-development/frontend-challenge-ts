@@ -45,6 +45,25 @@ const Input: FunctionComponent<InputProps> = ({
       </Styled.InputWrapper>
     )
   }
+
+  if (type === 'number') {
+    return (
+      <Styled.InputWrapper>
+        <label htmlFor={id}>
+          {label} {inputLabelCaption && <span>{inputLabelCaption}</span>}
+        </label>
+        <Styled.InputDiv>
+          <input
+            type={type}
+            min={0}
+            id={id}
+            onChange={onChange}
+            value={value}
+            {...inputProps}
+          />
+        </Styled.InputDiv>
+      </Styled.InputWrapper>
+    )}
   return (
     <Styled.InputWrapper>
       <label htmlFor={id}>

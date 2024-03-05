@@ -48,7 +48,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             />
             <Input
               label="Annual Income in USD"
-              type="text"
+              type="number"
               onChange={(e) => { updateField('income', (e.target as HTMLInputElement).value) }}
               value={localData.income.toString() || ''}
               inputLabelCaption="[Input 0 if you are a student]"
