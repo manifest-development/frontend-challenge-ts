@@ -63,7 +63,8 @@ const Input: FunctionComponent<InputProps> = ({
           />
         </Styled.InputDiv>
       </Styled.InputWrapper>
-    )}
+    )
+  }
   return (
     <Styled.InputWrapper>
       <label htmlFor={id}>

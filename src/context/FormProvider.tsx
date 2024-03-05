@@ -5,11 +5,13 @@ import React, {
   useState
 } from 'react'
 import { User } from '../class/user'
+import { useNavigate } from 'react-router-dom'
 
 const CreateProviderValue = () => {
   const [formStep, setFormStep] = useState<number>(1)
   const [userData, setUserData] = useState<User>(new User())
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const navigate = useNavigate()
 
   const updateFormStep = (updatedUserData: User) => {
     if (updatedUserData.name && updatedUserData.income >= 0) {
@@ -31,21 +33,25 @@ const CreateProviderValue = () => {
       setTimeout(res, 1500)
     })
 
-  const saveAndResetData = async () => {
+  const saveData = async () => {
     try {
       await mockSaveData()
-      // ADD THANK YOU PAGE HERE
-      setUserData(new User())
-      setFormStep(1)
       setIsLoading(false)
+      navigate('/thank-you')
     } catch (e) {
       console.error(e)
     }
   }
 
+  const resetData = () => {
+    setUserData(new User())
+    setFormStep(1)
+    navigate('/')
+  }
+
   const confirmForm = () => {
     setIsLoading(true)
-    saveAndResetData()
+    saveData()
   }
 
   const backToPreviousStep = () => {
@@ -59,7 +65,8 @@ const CreateProviderValue = () => {
     updateUserData,
     confirmForm,
     backToPreviousStep,
-    isLoading
+    isLoading,
+    resetData
   }
 }
 
