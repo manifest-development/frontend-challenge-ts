@@ -13,8 +13,7 @@ export const ThankYouWrapper = styled.div`
   @media only screen and (max-width: 768px) {
     padding-left: 30px;
     padding-right: 30px;
-}
-
+  }
 `
 
 export const AgentImage = styled.image`
@@ -24,7 +23,6 @@ export const AgentImage = styled.image`
   @media only screen and (max-width: 768px) {
       justify-content: center;
   }
-  
 `
 
 export const AgentBox = styled.div`
