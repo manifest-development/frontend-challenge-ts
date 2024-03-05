@@ -68,14 +68,4 @@ test('Demo page is loaded', async ({ page }) => {
   await expect(formPage).toBeInViewport();
 
   console.log('Complete form and refresh form')
-
-  
-
-
-  // // Back to form step 1 and form should be reset
-  // await page.waitForTimeout(3000);
-  // const form1Input = await page.locator('#input-name');
-  // const nameInputValie = await form1Input.inputValue();
-  // await expect(form1Input).toBeInViewport();
-  // await expect(nameInputValie).toBe('');
 });
