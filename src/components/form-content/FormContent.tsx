@@ -136,7 +136,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
                 </Styled.Message>
               </Styled.MessageContainer>
               {/* <Button onClick={backToPreviousStep} id="form-thank-you-submit-another"> */}
-              <Button onClick={submitAnotherForm} id="form-thank-you-submit-another">
+              <Button onClick={submitAnotherForm} id="submit-another-btn">
                 Submit Another
               </Button>
             </div>
