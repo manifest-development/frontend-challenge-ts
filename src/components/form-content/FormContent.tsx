@@ -6,6 +6,7 @@ import Flex from "../../layout/flex";
 import Button from "../button";
 import Input from "../input";
 import * as Styled from "./styles";
+import katieImage from "../../assets/katie.png";
 
 interface FormContentProps {
   currentStep: number;
@@ -126,10 +127,14 @@ const FormContent: FunctionComponent<FormContentProps> = ({
         ) : (
           currentStep === 4 && (
             <div className="column">
-              <Styled.FormHeading>Thank You</Styled.FormHeading>
-              <p>
-                Hi, {userData.name}, thank you for for submitting the form. We will check and get back to you within 2 business days.
-              </p>
+              <Styled.MessageContainer>
+                <Styled.ImageContainer>
+                  <Styled.ProfileImage src={katieImage} alt="Profile Picture" />
+                </Styled.ImageContainer>
+                <Styled.Message>
+                  Hi, {userData.name}, thank you for submitting the form. We will check and get back to you within 2 business days.
+                </Styled.Message>
+              </Styled.MessageContainer>
               {/* <Button onClick={backToPreviousStep} id="form-thank-you-submit-another"> */}
               <Button onClick={submitAnotherForm} id="form-thank-you-submit-another">
                 Submit Another
