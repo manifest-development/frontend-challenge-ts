@@ -1,56 +1,54 @@
-import React, {
-  type FunctionComponent,
-  type PropsWithChildren,
-  createContext,
-  useState
-} from 'react'
-import { User } from '../class/user'
+import React, { type FunctionComponent, type PropsWithChildren, createContext, useState } from "react";
+import { User } from "../class/user";
 
 const CreateProviderValue = () => {
-  const [formStep, setFormStep] = useState<number>(1)
-  const [userData, setUserData] = useState<User>(new User())
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [formStep, setFormStep] = useState<number>(1);
+  const [userData, setUserData] = useState<User>(new User());
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  //Exercise 1 -> updated form step to all 0 or more income
   const updateFormStep = (updatedUserData: User) => {
-    if (updatedUserData.name && updatedUserData.income) {
-      setFormStep(2)
+    if (updatedUserData.name && updatedUserData.income >= 0) {
+      setFormStep(2);
     }
     if (updatedUserData.education) {
-      setFormStep(3)
+      setFormStep(3);
     }
-  }
+  };
 
   const updateUserData = (updatedUserData: User) => {
-    updateFormStep(updatedUserData)
-    setUserData(updatedUserData)
-  }
+    updateFormStep(updatedUserData);
+    setUserData(updatedUserData);
+  };
 
   const mockSaveData = async () =>
     // eslint-disable-next-line promise/param-names
     await new Promise((res) => {
-      setTimeout(res, 1500)
-    })
+      setTimeout(res, 1500);
+    });
 
   const saveAndResetData = async () => {
     try {
-      await mockSaveData()
+      await mockSaveData();
       // ADD THANK YOU PAGE HERE
-      setUserData(new User())
-      setFormStep(1)
-      setIsLoading(false)
+
+      // RESET FORM IF USER CLICKS - 'Submit Another' inside the Thank You Page
+      setUserData(new User());
+      setFormStep(1);
+      setIsLoading(false);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-  }
+  };
 
   const confirmForm = () => {
-    setIsLoading(true)
-    saveAndResetData()
-  }
+    setIsLoading(true);
+    saveAndResetData();
+  };
 
   const backToPreviousStep = () => {
-    setFormStep((prev) => prev - 1)
-  }
+    setFormStep((prev) => prev - 1);
+  };
 
   return {
     formStep,
@@ -59,22 +57,16 @@ const CreateProviderValue = () => {
     updateUserData,
     confirmForm,
     backToPreviousStep,
-    isLoading
-  }
-}
+    isLoading,
+  };
+};
 
-type FormProviderValue = ReturnType<typeof CreateProviderValue>
+type FormProviderValue = ReturnType<typeof CreateProviderValue>;
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-export const FormContext = createContext({} as FormProviderValue)
+export const FormContext = createContext({} as FormProviderValue);
 
-const FormProvider: FunctionComponent<PropsWithChildren> = ({
-  children
-}: PropsWithChildren) => {
-  return (
-    <FormContext.Provider value={CreateProviderValue()}>
-      {children}
-    </FormContext.Provider>
-  )
-}
+const FormProvider: FunctionComponent<PropsWithChildren> = ({ children }: PropsWithChildren) => {
+  return <FormContext.Provider value={CreateProviderValue()}>{children}</FormContext.Provider>;
+};
 
-export default FormProvider
+export default FormProvider;
