@@ -32,7 +32,9 @@ const FormNavBar: FunctionComponent<FormNavBarProps> = ({ currentStep }: FormNav
           <FormStepItem active={currentStep === 3} done={currentStep >= 3}>
             3
           </FormStepItem>
-
+          <FormStepItem active={currentStep === 4} done={currentStep >= 4}>
+            4
+          </FormStepItem>
         </Flex>
       </Container>
 
