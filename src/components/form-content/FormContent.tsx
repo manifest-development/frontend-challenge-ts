@@ -15,7 +15,7 @@ interface FormContentProps {
   confirmForm: () => void;
   backToPreviousStep: () => void;
 
-  // TODO - Added
+  //* Added
   submitAnotherForm: () => void;
 }
 
@@ -25,7 +25,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
   userData,
   confirmForm,
   backToPreviousStep,
-  // TODO - Added
+  //* Added
   submitAnotherForm,
 }: FormContentProps) => {
   const [localData, setLocalData] = useState(userData);
@@ -50,7 +50,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
     <Container>
       <Styled.FormContentDiv>
         {currentStep === 1 ? (
-          <Flex flexDirection="column">
+          <Styled.QuestionContainer>
             <Styled.FormHeading>Basic Information</Styled.FormHeading>
             <Input
               label="Name"
@@ -77,9 +77,9 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             <Button onClick={submitForm} id="form-step-1-next">
               Next
             </Button>
-          </Flex>
+          </Styled.QuestionContainer>
         ) : currentStep === 2 ? (
-          <Flex flexDirection="column">
+          <Styled.QuestionContainer>
             <Styled.FormHeading>Education Level</Styled.FormHeading>
             <Input
               label="Education Level"
@@ -100,11 +100,12 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             <Button onClick={submitForm} id="form-step-2-next">
               Next
             </Button>
-          </Flex>
+          </Styled.QuestionContainer>
         ) : currentStep === 3 ? (
-          <Flex flexDirection="column" id="confirmation-page">
+          <Styled.QuestionContainer id="confirmation-page">
+            {/* // <Flex flexDirection="column" id="confirmation-page"> */}
             <Styled.FormHeading>Confirmation</Styled.FormHeading>
-            <Flex flexDirection="column" justifyContent="flex-start">
+            <Flex flexDirection="column" justifyContent="flex-start" alignItems="center">
               <Styled.LineParagraph id="confirmation-name">
                 <span>Name</span>:<strong>{localData.name}</strong>
               </Styled.LineParagraph>
@@ -123,10 +124,10 @@ const FormContent: FunctionComponent<FormContentProps> = ({
               {/* <Button onClick={submitForm} id="form-confirmation-button"> */}
               Confirm
             </Button>
-          </Flex>
+          </Styled.QuestionContainer>
         ) : (
           currentStep === 4 && (
-            <div className="column">
+            <Styled.ThankYouContainer>
               <Styled.MessageContainer>
                 <Styled.ImageContainer>
                   <Styled.ProfileImage src={katieImage} alt="Profile Picture" />
@@ -135,11 +136,10 @@ const FormContent: FunctionComponent<FormContentProps> = ({
                   Hi, {userData.name}, thank you for submitting the form. We will check and get back to you within 2 business days.
                 </Styled.Message>
               </Styled.MessageContainer>
-              {/* <Button onClick={backToPreviousStep} id="form-thank-you-submit-another"> */}
               <Button onClick={submitAnotherForm} id="submit-another-btn">
                 Submit Another
               </Button>
-            </div>
+            </Styled.ThankYouContainer>
           )
         )}
       </Styled.FormContentDiv>

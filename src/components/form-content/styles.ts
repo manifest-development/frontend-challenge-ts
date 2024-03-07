@@ -2,7 +2,22 @@ import styled from "styled-components";
 
 export const FormContentDiv = styled.div`
   display: flex;
-  height: calc(100vh - 120px);
+  // height: calc(100vh - 120px);
+  height: calc(50vh - 120px);
+  // border: 2px solid black;
+
+  @media (max-width: 768px) {
+    height: calc(60vh - 120px);
+  }
+`;
+
+export const QuestionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 `;
 
 export const FormHeading = styled.h2`
@@ -32,6 +47,14 @@ export const LineParagraph = styled.p`
     font-weight: 600;
   }
 `;
+
+export const ThankYouContainer = styled.div`
+  // border: 2px solid black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const MessageContainer = styled.div`
   display: flex;
   align-items: end;
