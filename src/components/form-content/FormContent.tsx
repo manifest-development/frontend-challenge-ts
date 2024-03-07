@@ -5,17 +5,18 @@ import Flex from '../../layout/flex'
 import Button from '../button'
 import Input from '../input'
 import * as Styled from './styles'
-
+import katie from '../../assets/katie.png'
 interface FormContentProps {
   currentStep: number
   updateUserData: (updatedUser: User) => void
   userData: User
   confirmForm: () => void
   backToPreviousStep: () => void
+  submitAnother: () => void
 }
 
 const FormContent: FunctionComponent<FormContentProps> = ({
-  currentStep, updateUserData, userData, confirmForm, backToPreviousStep
+  currentStep, updateUserData, userData, confirmForm, backToPreviousStep, submitAnother
 }: FormContentProps) => {
   const [localData, setLocalData] = useState(userData)
 
@@ -80,8 +81,8 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             <Button onClick={submitForm} id="form-step-2-next">Next</Button>
           </Flex>
               )
-            : (
-                currentStep === 3 && (
+            : currentStep === 3
+              ? (
             <Flex flexDirection="column" id="confirmation-page">
               <Styled.FormHeading>Confirmation</Styled.FormHeading>
               <Flex flexDirection="column" justifyContent="flex-start">
@@ -105,6 +106,18 @@ const FormContent: FunctionComponent<FormContentProps> = ({
               <Button onClick={confirmForm} id="form-confirmation-button">Confirm</Button>
             </Flex>
                 )
+              : currentStep === 4 && (
+            <Flex flexDirection="column" justifyContent = 'space-evenly' id='thank-you-main'>
+              <Flex flexDirection='row' justifyContent = 'space-between' id="thank-you-page">
+              <Styled.UserImage>
+              <img src={katie} alt='image'/>
+              </Styled.UserImage>
+              <Styled.ThankYouContent>
+                <p>Hi, {localData.name}, thank you for submitting the form. We will check and get back to you within 2 business days.</p>
+              </Styled.ThankYouContent>
+              </Flex>
+              <Button onClick={submitAnother} id="form-submitAnother-button">Submit Another</Button>
+            </Flex>
               )}
       </Styled.FormContentDiv>
     </Container>
