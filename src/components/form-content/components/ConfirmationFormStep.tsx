@@ -24,7 +24,6 @@ const ConfirmationFormStep = ({ localData, backToPreviousStep, confirmForm }: Co
           <span>Name</span>:<strong>{formattedName}</strong>
         </Styled.LineParagraph>
         <Styled.LineParagraph id="confirmation-income">
-          {/* <span>Income</span>:<strong>{localData.income}</strong> */}
           <span>Income</span>:<strong>{formattedIncome}</strong>
         </Styled.LineParagraph>
         <Styled.LineParagraph id="confirmation-education">

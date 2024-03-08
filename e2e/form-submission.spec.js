@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-// import katieImage from "../src/assets/katie.png";
+import convertIncomeToUSD from "../src/utils/convertIncomeToUSD";
 
 const testName = "User A";
 const testIncome = "40000";
@@ -44,7 +44,9 @@ test("Demo page is loaded", async ({ page }) => {
   await expect(name).toContainText(testName);
 
   const income = await page.locator("#confirmation-income");
-  await expect(income).toContainText(testIncome);
+  const incomeText = await income.textContent(); // Need to use textContent() to get the text value at confirmation-income element as we are converting the value to USD so the testIncome of "40000" would not match the text value of "$40,000.00"
+  const formattedIncome = convertIncomeToUSD(incomeText); // 40000 => $40,000.00
+  await expect(income).toContainText(formattedIncome);
 
   const education = await page.locator("#confirmation-education");
   await expect(education).toContainText(testEducation);
@@ -53,7 +55,7 @@ test("Demo page is loaded", async ({ page }) => {
   await confirmButton.click();
 
   console.log("Complete form confirmation page");
-  // ADD Form Thank you page test here
+
   const submitAnotherButton = await page.locator("#submit-another-btn");
   await expect(submitAnotherButton).toBeInViewport();
   await submitAnotherButton.click();
