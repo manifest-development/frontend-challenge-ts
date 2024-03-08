@@ -6,16 +6,22 @@ const CreateProviderValue = () => {
   const [userData, setUserData] = useState<User>(new User());
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // const [displayThankYouPage, setDisplayThankYouPage] = useState<boolean>(false);
-
-  //Exercise 1 -> updated form step to all 0 or more income
+  // Checks that the user has filled out the information & checks the current step to ensure the user is navigated to the correct step
   const updateFormStep = (updatedUserData: User) => {
-    if (updatedUserData.name && updatedUserData.income >= 0) {
+    // First Step Check
+    if (updatedUserData.name && updatedUserData.income >= 0 && formStep === 1) {
       setFormStep(2);
     }
-    if (updatedUserData.education) {
+
+    // Second Step Check
+    if (updatedUserData.education && formStep === 2) {
       setFormStep(3);
     }
+  };
+
+  // Allows user to navigate back to the previous step(1-3)
+  const backToPreviousStep = () => {
+    setFormStep((prev) => prev - 1);
   };
 
   const updateUserData = (updatedUserData: User) => {
@@ -32,22 +38,11 @@ const CreateProviderValue = () => {
   const saveAndResetData = async () => {
     try {
       await mockSaveData(); //will run after user clicks Confirm
-      //At this point, we consider it a success, so we can display a thank you page
-      // TODO - ADD THANK YOU PAGE HERE
-      //set displayThankYouPage to true
-      // setDisplayThankYouPage(true);
-      setFormStep(4); //navigates user to thank you page
-      // RESET FORM IF USER CLICKS - 'Submit Another' inside the Thank You Page
-      //May have to move this section into another function after we do 'Submit Another' on the thank you page
-      // if (!displayThankYouPage) {
-      // console.log("User clicked submit another, resetting form...");
-      console.log("inside saveAndResetData...");
-      // setUserData(new User()); //resets user to default
-      //move setFormStep(1) to our new function after use clicks 'submit another'
-      // setFormStep(1); //navigates user back to question 1
+      // Opens Thank You Page
+      setFormStep(4);
 
-      setIsLoading(false); // stops loading once we are on step 1
-      // }
+      // setUserData(new User()); //resets user to default
+      setIsLoading(false); // Loading turns to false afer 1500ms due tothe mockSaveData function
     } catch (e) {
       console.error(e);
     }
@@ -61,18 +56,10 @@ const CreateProviderValue = () => {
     saveAndResetData();
   };
 
-  //TODO - left off here, need to fix our 'submitAnotherForm' being missing from our types
-  //TODO add a submitAnotherForm function here that will do the above
   const submitAnotherForm = () => {
-    console.log("inside submitAnotherForm, redirecting user to step 1...");
-    setUserData(new User()); //resets user to default
-    // setUserData(new User()); //resets user to default
+    console.log("Submit Another BTN clicked, redirecting user to step 1");
+    setUserData(new User()); //moved this here to reset use data when user clicks 'Submit Another' on the thank you page instead of the confirmation form
     setFormStep(1); //navigates user back to question 1
-    // setIsLoading(false); // stops loading once we are on step 1
-  };
-
-  const backToPreviousStep = () => {
-    setFormStep((prev) => prev - 1);
   };
 
   return {
@@ -83,7 +70,6 @@ const CreateProviderValue = () => {
     confirmForm,
     backToPreviousStep,
     isLoading,
-    // Our new function to submit another form
     submitAnotherForm,
   };
 };

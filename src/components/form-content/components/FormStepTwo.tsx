@@ -7,9 +7,10 @@ interface FormStepTwoProps {
   localData: User;
   submitForm: () => void;
   updateField: (key: string, value: string) => void;
+  backToPreviousStep: () => void;
 }
 
-const FormStepTwo = ({ localData, submitForm, updateField }: FormStepTwoProps) => {
+const FormStepTwo = ({ localData, submitForm, updateField, backToPreviousStep }: FormStepTwoProps) => {
   return (
     <Styled.QuestionContainer>
       <Styled.FormHeading>Education Level</Styled.FormHeading>
@@ -29,6 +30,9 @@ const FormStepTwo = ({ localData, submitForm, updateField }: FormStepTwoProps) =
         value={localData.education}
         id="input-education"
       />
+      <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
+        Back
+      </Button>
       <Button onClick={submitForm} id="form-step-2-next">
         Next
       </Button>

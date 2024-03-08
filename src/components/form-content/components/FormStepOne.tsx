@@ -11,6 +11,14 @@ interface FormStepOneProps {
 }
 
 const FormStepOne = ({ localData, submitForm, updateField }: FormStepOneProps) => {
+  console.log("local data: ", localData);
+
+  const handleSubmit = () => {
+    if (!localData.name) return;
+
+    if (localData.name && localData.income > -1) submitForm();
+  };
+
   return (
     <Styled.QuestionContainer>
       <Styled.FormHeading>Basic Information</Styled.FormHeading>
@@ -23,8 +31,6 @@ const FormStepOne = ({ localData, submitForm, updateField }: FormStepOneProps) =
         }}
         value={localData.name || ""}
         id="input-name"
-        required={true}
-        // data-testid="input-name"
       />
       <Input
         label="Annual Income in USD"
@@ -38,7 +44,15 @@ const FormStepOne = ({ localData, submitForm, updateField }: FormStepOneProps) =
         id="input-income"
       />
 
-      <Button onClick={submitForm} id="form-step-1-next" data-testid="form-step-1-next">
+      {/* <Button onClick={submitForm} id="form-step-1-next" data-testid="form-step-1-next"> */}
+      <Button
+        onClick={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        id="form-step-1-next"
+        data-testid="form-step-1-next"
+      >
         Next
       </Button>
     </Styled.QuestionContainer>

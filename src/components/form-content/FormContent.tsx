@@ -32,9 +32,12 @@ const FormContent: FunctionComponent<FormContentProps> = ({
     setLocalData(userData);
   }, [userData]);
 
-  // Update User Data After Each Step
+  // Updates User Data & Navigates User to the next step
   const submitForm = () => {
+    // e.preventDefault();
     updateUserData(new User(localData));
+    // updateUserData(new User(localData), currentStep + 1);
+    // updateUserDataAndFormStep(new User(localData), currentStep++);
   };
 
   // Updated field data on key change
@@ -49,11 +52,16 @@ const FormContent: FunctionComponent<FormContentProps> = ({
         {currentStep === 1 ? (
           <FormStepOne localData={localData} submitForm={submitForm} updateField={updateField} />
         ) : currentStep === 2 ? (
-          <FormStepTwo localData={localData} submitForm={submitForm} updateField={updateField} />
+          <FormStepTwo
+            localData={localData}
+            submitForm={submitForm}
+            updateField={updateField}
+            backToPreviousStep={backToPreviousStep}
+          />
         ) : currentStep === 3 ? (
           <ConfirmationFormStep localData={localData} backToPreviousStep={backToPreviousStep} confirmForm={confirmForm} />
         ) : (
-          currentStep === 4 && <ThankYouMessage name={userData.name} submitAnotherForm={submitAnotherForm} />
+          currentStep === 4 && <ThankYouMessage name={localData.name} submitAnotherForm={submitAnotherForm} />
         )}
       </Styled.FormContentDiv>
     </Container>

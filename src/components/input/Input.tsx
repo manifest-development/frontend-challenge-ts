@@ -22,8 +22,6 @@ const Input: FunctionComponent<InputProps> = ({
   id,
   options = [],
   placeholder,
-  //* ADDED
-  required = false,
   ...inputProps
 }: InputProps) => {
   if (type === "select") {
@@ -52,16 +50,7 @@ const Input: FunctionComponent<InputProps> = ({
         {label} {inputLabelCaption && <span>{inputLabelCaption}</span>}
       </label>
       <Styled.InputDiv>
-        <input
-          type={type}
-          id={id}
-          onChange={onChange}
-          value={value}
-          {...inputProps}
-          placeholder={placeholder}
-          required={required}
-          data-testid={id}
-        />
+        <input type={type} id={id} onChange={onChange} value={value} {...inputProps} placeholder={placeholder} data-testid={id} />
       </Styled.InputDiv>
     </Styled.InputWrapper>
   );
