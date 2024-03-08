@@ -3,6 +3,7 @@ import Flex from "../../../layout/flex";
 import Button from "../../button";
 import type { User } from "../../../class/user";
 import capitalizeName from "../../../utils/capitalizeName";
+import convertIncomeToUSD from "../../../utils/convertIncomeToUSD";
 
 interface ConfirmationFormStepProps {
   localData: User;
@@ -12,6 +13,7 @@ interface ConfirmationFormStepProps {
 
 const ConfirmationFormStep = ({ localData, backToPreviousStep, confirmForm }: ConfirmationFormStepProps) => {
   const formattedName = capitalizeName(localData.name);
+  const formattedIncome = convertIncomeToUSD(localData.income);
 
   return (
     <Styled.QuestionContainer id="confirmation-page">
@@ -22,7 +24,8 @@ const ConfirmationFormStep = ({ localData, backToPreviousStep, confirmForm }: Co
           <span>Name</span>:<strong>{formattedName}</strong>
         </Styled.LineParagraph>
         <Styled.LineParagraph id="confirmation-income">
-          <span>Income</span>:<strong>{localData.income}</strong>
+          {/* <span>Income</span>:<strong>{localData.income}</strong> */}
+          <span>Income</span>:<strong>{formattedIncome}</strong>
         </Styled.LineParagraph>
         <Styled.LineParagraph id="confirmation-education">
           <span>Education</span>:<strong>{localData.education}</strong>
