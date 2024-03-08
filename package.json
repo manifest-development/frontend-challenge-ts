@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.71",
     "@types/react": "^18.2.48",
@@ -23,7 +23,8 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "lint": "npx eslint --ext .tsx,.ts src --fix",
-    "e2e": "npx playwright test",
+    "e2ePrev": "npx playwright test",
+    "e2e": "npx playwright test e2e/form-submission.spec.js",
     "e2e:ui": "npx playwright test --ui",
     "prepare": "husky install"
   },
@@ -54,6 +55,7 @@
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "jest": "^27.5.1"
   }
 }

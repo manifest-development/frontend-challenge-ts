@@ -25,7 +25,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
   userData,
   confirmForm,
   backToPreviousStep,
-  //* Added
+  //* ADDED FOR THE THANK YOU PAGE
   submitAnotherForm,
 }: FormContentProps) => {
   const [localData, setLocalData] = useState(userData);
@@ -61,6 +61,8 @@ const FormContent: FunctionComponent<FormContentProps> = ({
               }}
               value={localData.name || ""}
               id="input-name"
+              required={true}
+              // data-testid="input-name"
             />
             <Input
               label="Annual Income in USD"
@@ -74,7 +76,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
               id="input-income"
             />
 
-            <Button onClick={submitForm} id="form-step-1-next">
+            <Button onClick={submitForm} id="form-step-1-next" data-testid="form-step-1-next">
               Next
             </Button>
           </Styled.QuestionContainer>
@@ -129,9 +131,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
           currentStep === 4 && (
             <Styled.ThankYouContainer>
               <Styled.MessageContainer>
-                <Styled.ImageContainer>
-                  <Styled.ProfileImage src={katieImage} alt="Profile Picture" />
-                </Styled.ImageContainer>
+                <Styled.ImageContainer>{/* <Styled.ProfileImage src={katieImage} alt="Profile Picture" /> */}</Styled.ImageContainer>
                 <Styled.Message>
                   Hi, {userData.name}, thank you for submitting the form. We will check and get back to you within 2 business days.
                 </Styled.Message>

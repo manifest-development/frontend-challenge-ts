@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+// import katieImage from "../src/assets/katie.png";
 
 const testName = "User A";
 const testIncome = "40000";
