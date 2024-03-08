@@ -8,6 +8,7 @@ import Input from "../input";
 import * as Styled from "./styles";
 import katieImage from "../../assets/katie.png";
 import ConfirmationFormStep from "./components/ConfirmationFormStep";
+import FormStepOne from "./components/FormStepOne";
 
 interface FormContentProps {
   currentStep: number;
@@ -51,36 +52,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
     <Container>
       <Styled.FormContentDiv>
         {currentStep === 1 ? (
-          <Styled.QuestionContainer>
-            <Styled.FormHeading>Basic Information</Styled.FormHeading>
-            <Input
-              label="Name"
-              type="text"
-              placeholder="Your name"
-              onChange={(e) => {
-                updateField("name", (e.target as HTMLInputElement).value);
-              }}
-              value={localData.name || ""}
-              id="input-name"
-              required={true}
-              // data-testid="input-name"
-            />
-            <Input
-              label="Annual Income in USD"
-              type="text"
-              onChange={(e) => {
-                updateField("income", (e.target as HTMLInputElement).value);
-              }}
-              value={localData.income.toString() || ""}
-              inputLabelCaption="[Input 0 if you are a student]"
-              placeholder="Your income"
-              id="input-income"
-            />
-
-            <Button onClick={submitForm} id="form-step-1-next" data-testid="form-step-1-next">
-              Next
-            </Button>
-          </Styled.QuestionContainer>
+          <FormStepOne localData={localData} submitForm={submitForm} updateField={updateField} />
         ) : currentStep === 2 ? (
           <Styled.QuestionContainer>
             <Styled.FormHeading>Education Level</Styled.FormHeading>

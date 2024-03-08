@@ -4,11 +4,6 @@ import Button from "../../button";
 import type { User } from "../../../class/user";
 
 interface ConfirmationFormStepProps {
-  // localData: {
-  //   name: string;
-  //   income: string;
-  //   education: string;
-  // };
   localData: User;
   backToPreviousStep: () => void;
   confirmForm: () => void;
