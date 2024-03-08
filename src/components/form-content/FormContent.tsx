@@ -2,11 +2,12 @@
 import { useEffect, useState, type FunctionComponent } from "react";
 import { User } from "../../class/user";
 import Container from "../../layout/container";
-import Flex from "../../layout/flex";
+// import Flex from "../../layout/flex";
 import Button from "../button";
 import Input from "../input";
 import * as Styled from "./styles";
 import katieImage from "../../assets/katie.png";
+import ConfirmationFormStep from "./components/ConfirmationFormStep";
 
 interface FormContentProps {
   currentStep: number;
@@ -104,34 +105,14 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             </Button>
           </Styled.QuestionContainer>
         ) : currentStep === 3 ? (
-          <Styled.QuestionContainer id="confirmation-page">
-            {/* // <Flex flexDirection="column" id="confirmation-page"> */}
-            <Styled.FormHeading>Confirmation</Styled.FormHeading>
-            <Flex flexDirection="column" justifyContent="flex-start" alignItems="center">
-              <Styled.LineParagraph id="confirmation-name">
-                <span>Name</span>:<strong>{localData.name}</strong>
-              </Styled.LineParagraph>
-              <Styled.LineParagraph id="confirmation-income">
-                <span>Income</span>:<strong>{localData.income}</strong>
-              </Styled.LineParagraph>
-              <Styled.LineParagraph id="confirmation-education">
-                <span>Education</span>:<strong>{localData.education}</strong>
-              </Styled.LineParagraph>
-            </Flex>
-            <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
-              Back
-            </Button>
-            {/* After user clicks confirm, we need to display the UI component */}
-            <Button onClick={confirmForm} id="form-confirmation-button">
-              {/* <Button onClick={submitForm} id="form-confirmation-button"> */}
-              Confirm
-            </Button>
-          </Styled.QuestionContainer>
+          <ConfirmationFormStep localData={localData} backToPreviousStep={backToPreviousStep} confirmForm={confirmForm} />
         ) : (
           currentStep === 4 && (
             <Styled.ThankYouContainer>
               <Styled.MessageContainer>
-                <Styled.ImageContainer>{/* <Styled.ProfileImage src={katieImage} alt="Profile Picture" /> */}</Styled.ImageContainer>
+                <Styled.ImageContainer>
+                  <Styled.ProfileImage src={katieImage} alt="Profile Picture" />
+                </Styled.ImageContainer>
                 <Styled.Message>
                   Hi, {userData.name}, thank you for submitting the form. We will check and get back to you within 2 business days.
                 </Styled.Message>
@@ -148,3 +129,31 @@ const FormContent: FunctionComponent<FormContentProps> = ({
 };
 
 export default FormContent;
+
+// export const ConfirmationPage = ({ localData, backToPreviousStep, confirmForm }) => {
+//   return (
+//     <Styled.QuestionContainer id="confirmation-page">
+//       {/* // <Flex flexDirection="column" id="confirmation-page"> */}
+//       <Styled.FormHeading>Confirmation</Styled.FormHeading>
+//       <Flex flexDirection="column" justifyContent="flex-start" alignItems="center">
+//         <Styled.LineParagraph id="confirmation-name">
+//           <span>Name</span>:<strong>{localData.name}</strong>
+//         </Styled.LineParagraph>
+//         <Styled.LineParagraph id="confirmation-income">
+//           <span>Income</span>:<strong>{localData.income}</strong>
+//         </Styled.LineParagraph>
+//         <Styled.LineParagraph id="confirmation-education">
+//           <span>Education</span>:<strong>{localData.education}</strong>
+//         </Styled.LineParagraph>
+//       </Flex>
+//       <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
+//         Back
+//       </Button>
+//       {/* After user clicks confirm, we need to display the UI component */}
+//       <Button onClick={confirmForm} id="form-confirmation-button">
+//         {/* <Button onClick={submitForm} id="form-confirmation-button"> */}
+//         Confirm
+//       </Button>
+//     </Styled.QuestionContainer>
+//   );
+// };
