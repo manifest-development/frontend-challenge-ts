@@ -23,7 +23,7 @@ interface FormNavBarProps {
 }
 
 const FormNavBar: FunctionComponent<FormNavBarProps> = ({ currentStep }: FormNavBarProps) => {
-  // Hide the FormComponent when the currentStep is 4(Thank You Message is displayed)
+  // Hide the Form Steps when user is on the 'Thank You Page'
   if (currentStep === 4) return null;
 
   return (

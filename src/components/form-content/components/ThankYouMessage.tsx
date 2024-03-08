@@ -10,7 +10,7 @@ interface ThankYouMessageProps {
 const ThankYouMessage = ({ name, submitAnotherForm }: ThankYouMessageProps) => {
   return (
     <Styled.ThankYouContainer>
-      <h2 style={{ textAlign: "center", marginTop: "10px" }}>Thank You for Your Submission!</h2>
+      <Styled.ThankYouHeading>Thank You for Your Submission!</Styled.ThankYouHeading>
       <Styled.MessageContainer>
         <Styled.ImageContainer>
           <Styled.ProfileImage src={katieImage} alt="Profile Picture" />

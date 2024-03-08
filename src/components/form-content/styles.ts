@@ -2,13 +2,11 @@ import styled from "styled-components";
 
 export const FormContentDiv = styled.div`
   display: flex;
-  // height: calc(100vh - 120px);
-  height: calc(50vh - 120px);
+  height: calc(100vh - 120px);
+  // height: calc(50vh - 120px);
   // border: 2px solid black;
-
-  @media (max-width: 768px) {
-    height: calc(60vh - 120px);
-  }
+  height: 100%;
+  padding-bottom: 10px;
 `;
 
 export const QuestionContainer = styled.div`
@@ -53,6 +51,12 @@ export const ThankYouContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+`;
+
+export const ThankYouHeading = styled.h2`
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
 `;
 
 export const MessageContainer = styled.div`
