@@ -32,6 +32,7 @@ module.exports = {
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/comma-dangle": "off",
+    "no-trailing-spaces": "off",
     "spaced-comment": "off",
     "multiline-ternary": "off",
   },
