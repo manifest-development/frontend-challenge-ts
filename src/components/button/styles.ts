@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-const buttonPrimaryColor = '#7B876D'
+const buttonPrimaryColor = "#7B876D";
 
 export const Button = styled.button<{ $invert: boolean }>`
   cursor: pointer;
@@ -15,8 +15,12 @@ export const Button = styled.button<{ $invert: boolean }>`
   border-radius: 10px;
   margin-bottom: 10px;
 
-  background: ${(props) =>
-    props.$invert ? 'transparent' : buttonPrimaryColor};
+  background: ${(props) => (props.$invert ? "transparent" : buttonPrimaryColor)};
   border: 2px solid ${buttonPrimaryColor};
-  color: ${(props) => (props.$invert ? buttonPrimaryColor : 'white')};
-`
+  color: ${(props) => (props.$invert ? buttonPrimaryColor : "white")};
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+`;

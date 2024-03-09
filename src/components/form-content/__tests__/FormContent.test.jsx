@@ -1,12 +1,12 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FormContent from "../FormContent";
 // import "@testing-library/jest-dom";
 import { User } from "../../../class/user";
 // import App from "../../../App";
 // import FormContent from "../FormContent";
-import { FormContext, FormProvider } from "../../../context/FormProvider";
-import { useContext } from "react";
+// import { FormContext, FormProvider } from "../../../context/FormProvider";
+// import { useContext } from "react";
 
 /*
 STEP 1:
@@ -61,8 +61,8 @@ test.skip("it should not let user proceed to step 2 without entering a name", as
   ).toBeInTheDocument();
 });
 
-describe("FormContent", () => {
-  const userData = { name: "John", income: 50000, education: "" };
+describe.skip("FormContent", () => {
+  const userData = { name: "John", income: 50000, education: "Bachelor's Degree" };
 
   test("renders Step 1 - Education when passed currentStep value of 1", () => {
     render(

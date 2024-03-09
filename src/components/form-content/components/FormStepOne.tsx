@@ -1,8 +1,8 @@
 import * as Styled from "../styles";
-// import Flex from "../../../layout/flex";
 import Button from "../../button";
 import type { User } from "../../../class/user";
 import Input from "../../input";
+import { useState, useEffect } from "react";
 
 interface FormStepOneProps {
   localData: User;
@@ -11,7 +11,12 @@ interface FormStepOneProps {
 }
 
 const FormStepOne = ({ localData, submitForm, updateField }: FormStepOneProps) => {
-  console.log("local data: ", localData);
+  // console.log("local data: ", localData);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    localData.name && localData.income >= 0 ? setIsDisabled(false) : setIsDisabled(true);
+  }, [localData]);
 
   const handleSubmit = () => {
     if (!localData.name) return;
@@ -52,6 +57,7 @@ const FormStepOne = ({ localData, submitForm, updateField }: FormStepOneProps) =
         }}
         id="form-step-1-next"
         data-testid="form-step-1-next"
+        disabled={isDisabled}
       >
         Next
       </Button>
