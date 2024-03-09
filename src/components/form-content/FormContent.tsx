@@ -7,6 +7,7 @@ import ConfirmationFormStep from "./components/ConfirmationFormStep";
 import FormStepOne from "./components/FormStepOne";
 import FormStepTwo from "./components/FormStepTwo";
 import ThankYouMessage from "./components/ThankYouMessage";
+import isNameInputValid from "../../utils/validateNameInput";
 
 interface FormContentProps {
   currentStep: number;
@@ -36,12 +37,14 @@ const FormContent: FunctionComponent<FormContentProps> = ({
   const submitForm = () => {
     // e.preventDefault();
     updateUserData(new User(localData));
-    // updateUserData(new User(localData), currentStep + 1);
-    // updateUserDataAndFormStep(new User(localData), currentStep++);
   };
 
   // Updated field data on key change
   const updateField = (key: string, value: string) => {
+    if (key === "name" && !isNameInputValid(value)) {
+      return;
+    }
+
     console.log("updateField: [key]:", key, "value:", value);
     setLocalData({ ...localData, [key]: value });
   };
