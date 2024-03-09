@@ -36,10 +36,12 @@ You're all set!
 
 ## To Run End-to-End Test with Playwright
 1. Start the development server using command:
+   
    ```bash
    npm run start
    ```
-2. Once your application is up, run the command:
+3. Once your application is up, run the command:
+   
    ```bash
    npm run e2e
    ```
@@ -47,6 +49,7 @@ You're all set!
 
 ### Alternative: End-to-End Test using Playwright UI 
   1. If you would like to see the End-to-End Test ran in a UI, you can use Playwright UI using the following command:
+     
      ```bash
       npm run e2e:ui
       ```
