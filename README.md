@@ -3,16 +3,31 @@
 ## Installation Instructions
 **To run the application locally, follow the steps below(commands added for additional help):**
 
-1. Clone the repository into the folder locally by using git clone: 
-   1. **git clone https://github.com/bartswierz/frontend-challenge-ts.git**
-2. Navigate into the directory:
-   1. **cd frontend-challenge-ts**
-3. Install the necessary packages inside package.json:
-   1. **npm install**
-4. Install Playwright
-   1. **npx playwright install** 
-5. Start the app:
-   1. **npm run start**
+1. Clone the repository into the folder locally by using git clone:
+   
+   ```bash
+   git clone https://github.com/bartswierz/frontend-challenge-ts.git
+   ```
+3. Navigate into the directory:
+   
+   ```bash
+   cd frontend-challenge-ts
+   ```
+4. Install the necessary packages inside package.json:
+   
+   ```bash
+   npm install
+   ```
+6. Install Playwright
+   
+   ```bash
+   npx playwright install
+   ```
+8. Start the app:
+   
+   ```bash
+   npm run start
+   ```
 
 You're all set!
 
