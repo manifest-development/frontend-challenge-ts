@@ -23,7 +23,6 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "lint": "npx eslint --ext .tsx,.ts src --fix",
-    "e2ePrev": "npx playwright test",
     "e2e": "npx playwright test e2e/form-submission.spec.js",
     "e2e:ui": "npx playwright test --ui",
     "prepare": "husky install"
