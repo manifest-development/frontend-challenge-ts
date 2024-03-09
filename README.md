@@ -1,6 +1,7 @@
 # Manifest - Coding Challenge
 
-Coding Challenge - For convenience, I have deployed the project on Netlify(https://bartswierz-coding-challenge.netlify.app/). If you would like to run the tests, you can follow the easy installation steps below.
+Coding Challenge - For convenience, I have deployed the project on Netlify(https://bartswierz-coding-challenge.netlify.app/). 
+I have also added installation instructions below to be able to run the application locally for the tests.
 
 ## Installation Instructions
 **To run the application locally, follow the steps below(commands added for additional help - ensure you are inside the Root Directory for the given commands after cloning the repo):**
