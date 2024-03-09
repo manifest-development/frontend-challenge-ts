@@ -36,10 +36,12 @@ You're all set!
 
 ## To Run End-to-End Test with Playwright
 1. Start the development server using command:
+   
    ```bash
    npm run start
    ```
-2. Once your application is up, run the command:
+3. Once your application is up, run the command:
+   
    ```bash
    npm run e2e
    ```
@@ -47,6 +49,7 @@ You're all set!
 
 ### Alternative: End-to-End Test using Playwright UI 
   1. If you would like to see the End-to-End Test ran in a UI, you can use Playwright UI using the following command:
+     
      ```bash
       npm run e2e:ui
       ```
@@ -92,6 +95,8 @@ While we were successful in ensuring all the exercises in the requirements were 
    - There is so much that can go into form validation that goes beyond the normal input-to-submission flow. I wanted to add **Zod** for improved form validation as I had used it in one of my personal projects and it worked so well combined with TypeScript. While I am still relatively new to Zod, the benefits it brings right from the start, is immense, I would have loved to add it to this application to be able to showcase how powerful it can be for such a small bundled size that ensures it doesn't bloat the application.
 2. **Unit & Integration Tests**
    - Over the past few weeks I have really taken a deep dive into testing with one of my recent projects that will be guaranteed at least 25 unique users. This made me want to ensure I put in safety nets even though it would be an MVP(Most Viable Product), I want to try to still provide a great early experience. First impressions are important even for early stage applications. I was excited to see testing was part of the coding challenge and was my favorite part of the coding challenge. I wanted to spend more time in improving upon my current knowledge on testing and add unit and integration tests to the most critical parts of the applications.
+3. **Implement Disabled Button**
+   - Adding a disabled button and conditionally setting the background color of the next button between the brand color and gray would be a great indicator for the user that some field was either filled incorrectly or left empty.
 
 ## Usage
 - **Form Step One - Name & Income**
