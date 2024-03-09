@@ -1,7 +1,7 @@
 import * as Styled from "../styles";
 import Button from "../../button";
 import katieImage from "../../../assets/katie.png";
-import capitalizeName from "../../../utils/capitalizeName";
+import { capitalizeName } from "../../../utils";
 
 interface ThankYouMessageProps {
   name: string;

@@ -3,11 +3,8 @@ import { useEffect, useState, type FunctionComponent } from "react";
 import { User } from "../../class/user";
 import Container from "../../layout/container";
 import * as Styled from "./styles";
-import ConfirmationFormStep from "./components/ConfirmationFormStep";
-import FormStepOne from "./components/FormStepOne";
-import FormStepTwo from "./components/FormStepTwo";
-import ThankYouMessage from "./components/ThankYouMessage";
-import isNameInputValid from "../../utils/validateNameInput";
+import { FormStepOne, FormStepTwo, ConfirmationFormStep, ThankYouMessage } from "./components";
+import { isNameValid, isIncomeValid } from "../../utils";
 
 interface FormContentProps {
   currentStep: number;
@@ -41,10 +38,11 @@ const FormContent: FunctionComponent<FormContentProps> = ({
 
   // Updated field data on key change
   const updateField = (key: string, value: string) => {
-    if (key === "name" && !isNameInputValid(value)) {
-      return;
-    }
+    if (key === "name" && !isNameValid(value)) return;
 
+    if (key === "income" && !isIncomeValid(value)) return;
+
+    // input is Education
     console.log("updateField: [key]:", key, "value:", value);
     setLocalData({ ...localData, [key]: value });
   };

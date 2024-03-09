@@ -2,8 +2,7 @@ import * as Styled from "../styles";
 import Flex from "../../../layout/flex";
 import Button from "../../button";
 import type { User } from "../../../class/user";
-import capitalizeName from "../../../utils/capitalizeName";
-import convertIncomeToUSD from "../../../utils/convertIncomeToUSD";
+import { capitalizeName, convertIncomeToUSD } from "../../../utils";
 
 interface ConfirmationFormStepProps {
   localData: User;
