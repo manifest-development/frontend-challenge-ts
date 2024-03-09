@@ -2,6 +2,7 @@ import * as Styled from "../styles";
 import Button from "../../button";
 import type { User } from "../../../class/user";
 import Input from "../../input";
+import { useState, useEffect } from "react";
 
 interface FormStepTwoProps {
   localData: User;
@@ -11,6 +12,13 @@ interface FormStepTwoProps {
 }
 
 const FormStepTwo = ({ localData, submitForm, updateField, backToPreviousStep }: FormStepTwoProps) => {
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  // DISABLES/ENABLES NEXT BUTTON BASED ON IF EDUCATION LEVEL IS FILLED OUT
+  useEffect(() => {
+    localData.education ? setIsDisabled(false) : setIsDisabled(true);
+  }, [localData]);
+
   return (
     <Styled.QuestionContainer>
       <Styled.FormHeading>Education Level</Styled.FormHeading>
@@ -33,7 +41,7 @@ const FormStepTwo = ({ localData, submitForm, updateField, backToPreviousStep }:
       <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
         Back
       </Button>
-      <Button onClick={submitForm} id="form-step-2-next">
+      <Button onClick={submitForm} id="form-step-2-next" disabled={isDisabled}>
         Next
       </Button>
     </Styled.QuestionContainer>

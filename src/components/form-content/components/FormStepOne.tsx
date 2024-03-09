@@ -11,9 +11,9 @@ interface FormStepOneProps {
 }
 
 const FormStepOne = ({ localData, submitForm, updateField }: FormStepOneProps) => {
-  // console.log("local data: ", localData);
   const [isDisabled, setIsDisabled] = useState(true);
 
+  // DISABLES/ENABLES NEXT BUTTON BASED ON IF NAME IS FILLED OUT(income defaults to 0 if left empty which is valid)
   useEffect(() => {
     localData.name && localData.income >= 0 ? setIsDisabled(false) : setIsDisabled(true);
   }, [localData]);
