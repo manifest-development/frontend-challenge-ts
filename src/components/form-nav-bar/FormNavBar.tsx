@@ -20,7 +20,7 @@ interface FormNavBarProps {
 
 const FormNavBar: FunctionComponent<FormNavBarProps> = ({ currentStep }: FormNavBarProps) => {
   return (
-    <Styled.FormNavBar>
+    (currentStep !== 4 && <Styled.FormNavBar>
       <Container>
         <Flex alignItems="center">
           <FormStepItem active={currentStep === 1} done={currentStep >= 1}>
@@ -36,7 +36,7 @@ const FormNavBar: FunctionComponent<FormNavBarProps> = ({ currentStep }: FormNav
         </Flex>
       </Container>
 
-    </Styled.FormNavBar>
+    </Styled.FormNavBar>)
   )
 }
 
