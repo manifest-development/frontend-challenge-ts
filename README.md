@@ -73,7 +73,7 @@ You're all set!
 
         $\color{green} Solution(Completed) $: I created a utility method that converted the income string into a USD format for an improved display. "40000" => "$40,000.00"
    4. **No indicator that a form field was incomplete**
-      - In this scenario, the user wouldn't know if they are being redirected to the next step or its stuck loading. The longer it tasks to get the user from A to B will decrease the chances of form completion so it is important to give users indicators of the problem. If its an empty field, we should notify them with a message.
+      - In this scenario, the user wouldn't know if they are being redirected to the next step or its stuck loading. The longer it tasks to get the user from A to B will decrease the chances of form completion so it is important to give users indicators of the problem. If its an empty field, we should let them know. One simple UI solution is disabling the button and reducing the opacity of the Next button.
         
         $\color{green} Solution(Completed) $: I have implemented a disabled button if the name, income, or education field is empty. The user will be able to visually see the next button with a 50% opacity and a cursor-not allowed icon when hovering over next indicating that the fields weren't completely filled out. I implemented validation for the name and income fields to only allow specific characters into them. For example, the name field only allows letters, spaces, and periods. The income field only allows numbers 0 to 9. This will help ensure the user inputs the correct values to make the process easy.
 
