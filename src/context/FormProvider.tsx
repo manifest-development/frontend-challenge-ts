@@ -21,6 +21,7 @@ const CreateProviderValue = () => {
 
   // Allows user to navigate back to the previous step(1-3)
   const backToPreviousStep = () => {
+    console.log("BACK BTN clicked, navigating user back to previous step");
     setFormStep((prev) => prev - 1);
   };
 

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FormContent from "../FormContent";
 import { act } from "react-dom/test-utils";
@@ -12,27 +12,6 @@ import {
   mockSubmitAnotherForm,
   // mockIsLoading,
 } from "../../../mocks/FormProviderMocks";
-
-/*
-STEP 1:
-id="input-name" - Name
-id="input-income" - Income
-id="form-step-1-next" - Next Button
-
-STEP 2:
-id="input-education" - Education
-id="form-step-2-next" - Next Button
-
-STEP 3:
-id="confirmation-name" - Name
-id="confirmation-income" - Income
-id="confirmation-education" - Education
-id="form-confirmation-back-button" - Back Button
-id="form-confirmation-button" - Confirmation Button
-
-STEP 4 - Thank You Page:
-id="submit-another-btn" - Thank You Page - Submit Another btn
-*/
 
 describe("FormContent", () => {
   it("should display Step 1 on initial load", () => {
@@ -134,5 +113,87 @@ describe("FormContent", () => {
 
     // Assert that next button is disabled
     expect(nextButton).toBeDisabled();
+  });
+
+  it("should take user back to step 1 after clicking the back button on step 2", async () => {
+    const user = userEvent.setup();
+    // let mockCurrentStep = 2;
+    let currentStep = 2;
+
+    // rerender the component when user clicks the back button
+    const { rerender } = render(
+      <FormContent
+        currentStep={currentStep}
+        updateUserData={mockUpdateUserData}
+        userData={mockUserData}
+        confirmForm={mockConfirmForm}
+        // This renders the step one component when the back button is clicked
+        backToPreviousStep={() => {
+          currentStep--;
+          rerender(
+            <FormContent
+              currentStep={currentStep}
+              updateUserData={mockUpdateUserData}
+              userData={mockUserData}
+              confirmForm={mockConfirmForm}
+              backToPreviousStep={() => {
+                currentStep--;
+              }}
+              submitAnotherForm={mockSubmitAnotherForm}
+            />
+          );
+        }} // Mocked backToPreviousStep function
+        submitAnotherForm={mockSubmitAnotherForm}
+      />
+    );
+
+    const backButton = screen.getByRole("button", { name: /go back to step one/i });
+    expect(backButton).toBeInTheDocument();
+
+    // user will click the back button on step 2
+    await user.click(backButton);
+
+    expect(screen.getByRole("heading", { name: /basic information/i })).toBeInTheDocument();
+  });
+
+  it("should take user back to step 2 after clicking the back button on the confirmation page", async () => {
+    const user = userEvent.setup();
+    // let mockCurrentStep = 2;
+    let currentStep = 3;
+
+    // rerender the component when user clicks the back button
+    const { rerender } = render(
+      <FormContent
+        currentStep={currentStep}
+        updateUserData={mockUpdateUserData}
+        userData={mockUserData}
+        confirmForm={mockConfirmForm}
+        // This renders the step two component when the back button is clicked
+        backToPreviousStep={() => {
+          currentStep--;
+          rerender(
+            <FormContent
+              currentStep={currentStep}
+              updateUserData={mockUpdateUserData}
+              userData={mockUserData}
+              confirmForm={mockConfirmForm}
+              backToPreviousStep={() => {
+                currentStep--;
+              }}
+              submitAnotherForm={mockSubmitAnotherForm}
+            />
+          );
+        }} // Mocked backToPreviousStep function
+        submitAnotherForm={mockSubmitAnotherForm}
+      />
+    );
+
+    const backButton = screen.getByRole("button", { name: /go back to step two/i });
+    expect(backButton).toBeInTheDocument();
+
+    // user will click the back button on step 2
+    await user.click(backButton);
+
+    expect(screen.getByRole("heading", { name: /education level/i })).toBeInTheDocument();
   });
 });

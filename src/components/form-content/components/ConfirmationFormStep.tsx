@@ -29,7 +29,7 @@ const ConfirmationFormStep = ({ localData, backToPreviousStep, confirmForm }: Co
           <span>Education</span>:<strong>{localData.education}</strong>
         </Styled.LineParagraph>
       </Flex>
-      <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
+      <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button" aria-label="go back to step two">
         Back
       </Button>
       {/* After user clicks confirm, we need to display the UI component */}

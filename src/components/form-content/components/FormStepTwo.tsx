@@ -38,7 +38,7 @@ const FormStepTwo = ({ localData, submitForm, updateField, backToPreviousStep }:
         value={localData.education}
         id="input-education"
       />
-      <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
+      <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button" aria-label="go back to step one">
         Back
       </Button>
       <Button onClick={submitForm} id="form-step-2-next" disabled={isDisabled} aria-label="go to step three">
