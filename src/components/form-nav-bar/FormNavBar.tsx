@@ -1,24 +1,31 @@
-import { type FunctionComponent, type ReactNode } from 'react'
+import { type FunctionComponent, type ReactNode } from "react";
 
-import Container from '../../layout/container'
-import Flex from '../../layout/flex'
-import * as Styled from './styles'
+import Container from "../../layout/container";
+import Flex from "../../layout/flex";
+import * as Styled from "./styles";
 
 interface FormStepItemProps {
-  active: boolean
-  done: boolean
-  children: ReactNode
+  active: boolean;
+  done: boolean;
+  children: ReactNode;
 }
 
 const FormStepItem: FunctionComponent<FormStepItemProps> = ({ active, done, children }: FormStepItemProps) => {
-  return <Styled.FormStepItem $active={active} $done={done}>{children}</Styled.FormStepItem>
-}
+  return (
+    <Styled.FormStepItem $active={active} $done={done}>
+      {children}
+    </Styled.FormStepItem>
+  );
+};
 
 interface FormNavBarProps {
-  currentStep: number
+  currentStep: number;
 }
 
 const FormNavBar: FunctionComponent<FormNavBarProps> = ({ currentStep }: FormNavBarProps) => {
+  // Hide the Form Steps when user is on the 'Thank You Page'
+  if (currentStep === 4) return null;
+
   return (
     <Styled.FormNavBar>
       <Container>
@@ -32,12 +39,10 @@ const FormNavBar: FunctionComponent<FormNavBarProps> = ({ currentStep }: FormNav
           <FormStepItem active={currentStep === 3} done={currentStep >= 3}>
             3
           </FormStepItem>
-
         </Flex>
       </Container>
-
     </Styled.FormNavBar>
-  )
-}
+  );
+};
 
-export default FormNavBar
+export default FormNavBar;
