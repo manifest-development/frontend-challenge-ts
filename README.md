@@ -77,8 +77,9 @@ You're all set!
       npm run coverage
       ```
 
-## Thought Process - Implementation
 <a name="thought-process"></a>
+## Thought Process - Implementation
+
 - Going into this project, I treated it as a real-world project and knew my proactiveness would lead me to make additional changes to the codebase after the exercises were completed. I am someone who gets invested into new projects and love to think outside the box of how I can improve upon it to ensure the target users' experience is great. During my research of Manifest, I was taken back to see tpast the scope of the requirements. I thought of Manifest's target audience and how setting up for one's retirement is one of the major stressors. I made notes during the exercises of possible areas of the form process that could cause frustration and possibly have the user abandon the process. Ensuring the user goes through the entire process towards completion was something we kept in mind. The three exercises were very straightforward and took around 40-50 minutes or so to complete. As the challenge indicated that it would be relatively easy with an estimate of 45 minutes, I wanted to keep a strict deadline to ensure we deliver what was asked for first. I found a few sections that could be improved on to make the user's experience better, this was important to me as the target audience has worked hard for their money and their retirement, this should be a stress-free experience for them.
   
 **Some possible areas that could cause them to abandon the process that I had found were the following:**
