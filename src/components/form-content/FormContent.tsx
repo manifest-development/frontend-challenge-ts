@@ -36,7 +36,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
     updateUserData(new User(localData));
   };
 
-  // Updated field data on key change
+  // Possible Improvement: Separate update fields for name, income, and education to avoid the if statements. Alternative #2: use a switch statement if we have more than 3 fields in the future.
   const updateField = (key: string, value: string) => {
     if (key === "name" && !isNameValid(value)) return;
 

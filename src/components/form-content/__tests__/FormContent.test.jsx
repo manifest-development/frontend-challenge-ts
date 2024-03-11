@@ -1,12 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+// import userEvent from "@testing-library/user-event";
 import FormContent from "../FormContent";
-// import "@testing-library/jest-dom";
-import { User } from "../../../class/user";
-// import App from "../../../App";
-// import FormContent from "../FormContent";
-// import { FormContext, FormProvider } from "../../../context/FormProvider";
-// import { useContext } from "react";
+import "@testing-library/jest-dom";
+import {
+  mockFormStep,
+  mockUserData,
+  mockUpdateUserData,
+  mockConfirmForm,
+  mockBackToPreviousStep,
+  mockSubmitAnotherForm,
+  // mockIsLoading,
+} from "../../../mocks/FormProviderMocks";
 
 /*
 STEP 1:
@@ -29,74 +33,22 @@ STEP 4 - Thank You Page:
 id="submit-another-btn" - Thank You Page - Submit Another btn
 */
 
-test.skip("it should not let user proceed to step 2 without entering a name", async () => {
-  const user = userEvent.setup();
-  const testUser = new User(); // name = "", income = "", education = ""
-  // render(<App />);
-  render(<FormContent currentStep={1} userData={testUser} updateUserData />);
-
-  //input name field
-  // const inputName = screen.getByTestId("input-name");
-  // const inputName = screen.getByRole("textbox", { name: /name/i, "data-testid": "input-name" });
-  const inputName = await screen.findByTestId("input-name");
-  expect(inputName).toBeInTheDocument();
-
-  // Simulate typing "dan" into the input field
-  await userEvent.type(inputName, "dan");
-
-  // Check if the value of the input field is 'dan'
-  expect(inputName).toHaveValue("dan");
-
-  // const nextButton = screen.getByTestId("form-step-1-next");
-  const nextButton = await screen.findByTestId("form-step-1-next");
-  expect(nextButton).toBeInTheDocument();
-  console.log("nextButton", nextButton);
-  await user.click(nextButton);
-
-  //Check if we can find the title saying "Education Level"
-  expect(
-    screen.getByRole("heading", {
-      name: /education level/i,
-    })
-  ).toBeInTheDocument();
-});
-
-describe.skip("FormContent", () => {
-  const userData = { name: "John", income: 50000, education: "Bachelor's Degree" };
-
-  test("renders Step 1 - Education when passed currentStep value of 1", () => {
+describe("FormContent", () => {
+  test("should display Step 1 on initial load", () => {
     render(
       <FormContent
-        currentStep={1}
-        updateUserData={() => {}}
-        userData={userData}
-        confirmForm={() => {}}
-        backToPreviousStep={() => {}}
-        submitAnotherForm={() => {}}
+        currentStep={mockFormStep}
+        updateUserData={mockUpdateUserData}
+        userData={mockUserData}
+        confirmForm={mockConfirmForm}
+        backToPreviousStep={mockBackToPreviousStep}
+        submitAnotherForm={mockSubmitAnotherForm}
       />
     );
 
-    // Assert that step 1 elements are rendered
-    expect(screen.getByLabelText("Name")).toBeInTheDocument();
-    expect(screen.getByText("Next")).toBeInTheDocument();
+    // Assert that Step 1 elements are rendered
+    const headingElement = screen.getByRole("heading", { name: /basic information/i });
+
+    expect(headingElement).toBeInTheDocument();
   });
-
-  test("renders Step 2 - Education when passed currentStep value of 2", () => {
-    render(
-      <FormContent
-        currentStep={2}
-        updateUserData={() => {}}
-        userData={userData}
-        confirmForm={() => {}}
-        backToPreviousStep={() => {}}
-        submitAnotherForm={() => {}}
-      />
-    );
-
-    // Assert that step 2 elements are rendered
-    expect(screen.getByLabelText("Education Level")).toBeInTheDocument();
-    expect(screen.getByText("Next")).toBeInTheDocument();
-  });
-
-  // Add more tests for other steps if needed
 });
