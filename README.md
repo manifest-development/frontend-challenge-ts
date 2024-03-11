@@ -7,13 +7,14 @@
 1. [Overview](#overview)
 1. [Installation Instructions](#installation-instructions)
 2. [End-to-End Tests](#to-run-end-to-end-test-with-playwright)
-3. [Thought Process - Implementation](#thought-process-implementation)
-4. [Thought Process - Design Choices](#thought-process-design-choices)
-5. [Thought Process - Problem Solved](#thought-process-problem-solved)
-6. [Thought Process - Codebase Improvements](#thought-process-codebase-improvements)
-7. [If I Had More Time](#if-i-had-more-time)
-8. [Possible Optimizations](#possible-optimizations)
-9. [Usage](#usage)
+4. [Thought Process - Implementation](#thought-process-implementation)
+5. [Thought Process - Design Choices](#thought-process-design-choices)
+6. [Thought Process - Problem Solved](#thought-process-problem-solved)
+7. [Thought Process - Codebase Improvements](#thought-process-codebase-improvements)
+8. [If I Had More Time](#if-i-had-more-time)
+9. [Possible Optimizations](#possible-optimizations)
+10. [Test Coverage Report](#test-coverage)
+11. [Usage](#usage)
 
 ## Overview
 
@@ -142,7 +143,6 @@ While the coding challenge was fairly small, I do still have optimizations in mi
 ## Test Coverage (Optional: run with npm run coverage)
 
 ![TestCoverage](https://github.com/bartswierz/frontend-challenge-ts/assets/100662080/c758208e-6887-4afa-89a5-da31288a14b7)
-
 
 ## Usage
 - **Form Step One - Name & Income**
