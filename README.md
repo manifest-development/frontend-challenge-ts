@@ -7,13 +7,14 @@
 1. [Overview](#overview)
 1. [Installation Instructions](#installation-instructions)
 2. [End-to-End Tests](#to-run-end-to-end-test-with-playwright)
+3. [Running Test Coverage](#test-coverage)
 4. [Thought Process - Implementation](#thought-process-implementation)
 5. [Thought Process - Design Choices](#thought-process-design-choices)
 6. [Thought Process - Problem Solved](#thought-process-problem-solved)
 7. [Thought Process - Codebase Improvements](#thought-process-codebase-improvements)
 8. [If I Had More Time](#if-i-had-more-time)
 9. [Possible Optimizations](#possible-optimizations)
-10. [Test Coverage Report](#test-coverage)
+10. [Test Coverage Report](#test-coverage-report)
 11. [Usage](#usage)
 
 ## Overview
@@ -140,6 +141,7 @@ While the coding challenge was fairly small, I do still have optimizations in mi
 3. **Reduce the number of API Calls or Limit Accessing State Management**
    - In the FormProvider, it may not be a large impact currently, but once the application grows, this can quickly cause a large performance hit if user input requires accessing our Redux Store or creates a API fetch request. Instead, we could add a debounce for the "onChange" handler, with 300-500ms delay that will update this once the user stops typing outside of the window. This may not be necessary with our currently FormContent layout, but some features may require sending the updated information to make an API call or to centralized state such as Redux, using a debounce in that case, could improve the performance greatly. I have used this technique in one of my large personal projects where the user would type into a search field that would send an API fetch that contained over 850,000+ games. The returned JSON was over 400-500 lines long so we definitely did not want to create a API call after every keystroke. We set a 300ms delay so it would only send the API call once they stopped typing for more than 300ms. This not only improved the user experience by not requiring them to click a submit button, but also dramatically improved performance by reducing the number of large API calls. 
 
+<a name="test-coverage-report"></a>
 ## Test Coverage (Optional: run with npm run coverage)
 
 ![TestCoverage](https://github.com/bartswierz/frontend-challenge-ts/assets/100662080/c758208e-6887-4afa-89a5-da31288a14b7)
