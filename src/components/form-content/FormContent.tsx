@@ -26,7 +26,6 @@ const FormContent: FunctionComponent<FormContentProps> = ({
   const [localData, setLocalData] = useState(userData);
 
   useEffect(() => {
-    console.log("userData: ", userData);
     setLocalData(userData);
   }, [userData]);
 
