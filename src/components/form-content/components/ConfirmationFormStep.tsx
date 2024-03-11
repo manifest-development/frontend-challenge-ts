@@ -33,7 +33,7 @@ const ConfirmationFormStep = ({ localData, backToPreviousStep, confirmForm }: Co
         Back
       </Button>
       {/* After user clicks confirm, we need to display the UI component */}
-      <Button onClick={confirmForm} id="form-confirmation-button">
+      <Button onClick={confirmForm} id="form-confirmation-button" aria-label="submit form confirmation">
         {/* <Button onClick={submitForm} id="form-confirmation-button"> */}
         Confirm
       </Button>
