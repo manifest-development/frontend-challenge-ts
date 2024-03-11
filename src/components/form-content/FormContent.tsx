@@ -42,7 +42,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
     if (key === "income" && !isIncomeValid(value)) return;
 
     // input is Education
-    console.log("updateField: [key]:", key, "value:", value);
+    // console.log("updateField: [key]:", key, "value:", value);
     setLocalData({ ...localData, [key]: value });
   };
 

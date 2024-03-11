@@ -104,7 +104,7 @@ describe("FormContent", () => {
 
     render(
       <FormContent
-        currentStep={mockFormStep}
+        currentStep={1}
         updateUserData={mockUpdateUserData}
         userData={mockUserData}
         confirmForm={mockConfirmForm}

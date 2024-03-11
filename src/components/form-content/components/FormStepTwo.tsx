@@ -41,7 +41,7 @@ const FormStepTwo = ({ localData, submitForm, updateField, backToPreviousStep }:
       <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">
         Back
       </Button>
-      <Button onClick={submitForm} id="form-step-2-next" disabled={isDisabled}>
+      <Button onClick={submitForm} id="form-step-2-next" disabled={isDisabled} aria-label="go to step three">
         Next
       </Button>
     </Styled.QuestionContainer>

@@ -7,7 +7,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-const Button: FunctionComponent<ButtonProps> = ({ invert, children, onClick, disabled = false, ...props }: ButtonProps) => {
+const Button: FunctionComponent<ButtonProps> = ({ invert, children, onClick, disabled = false, id, ...props }: ButtonProps) => {
   return (
     <Styled.Button onClick={onClick} $invert={invert || false} {...props} disabled={disabled}>
       {children}
