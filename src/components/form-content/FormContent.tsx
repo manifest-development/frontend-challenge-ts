@@ -4,6 +4,7 @@ import Container from '../../layout/container'
 import Flex from '../../layout/flex'
 import Button from '../button'
 import Input from '../input'
+import Profile from '../../assets/katie.png'
 import * as Styled from './styles'
 
 interface FormContentProps {
@@ -12,10 +13,11 @@ interface FormContentProps {
   userData: User
   confirmForm: () => void
   backToPreviousStep: () => void
+  submitAnotherForm: () => void
 }
 
 const FormContent: FunctionComponent<FormContentProps> = ({
-  currentStep, updateUserData, userData, confirmForm, backToPreviousStep
+  currentStep, updateUserData, userData, confirmForm, backToPreviousStep, submitAnotherForm
 }: FormContentProps) => {
   const [localData, setLocalData] = useState(userData)
 
@@ -48,7 +50,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             />
             <Input
               label="Annual Income in USD"
-              type="text"
+              type="number"
               onChange={(e) => { updateField('income', (e.target as HTMLInputElement).value) }}
               value={localData.income.toString() || ''}
               inputLabelCaption="[Input 0 if you are a student]"
@@ -80,8 +82,8 @@ const FormContent: FunctionComponent<FormContentProps> = ({
             <Button onClick={submitForm} id="form-step-2-next">Next</Button>
           </Flex>
               )
-            : (
-                currentStep === 3 && (
+            : currentStep === 3
+              ? (
             <Flex flexDirection="column" id="confirmation-page">
               <Styled.FormHeading>Confirmation</Styled.FormHeading>
               <Flex flexDirection="column" justifyContent="flex-start">
@@ -103,9 +105,17 @@ const FormContent: FunctionComponent<FormContentProps> = ({
               </Flex>
               <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">Back</Button>
               <Button onClick={confirmForm} id="form-confirmation-button">Confirm</Button>
-            </Flex>
-                )
-              )}
+            </Flex>)
+              : (
+                  (currentStep === 4 && (
+            <Flex flexDirection="column" id="thankyou-page" justifyContent='center'>
+              <Styled.SubmissionComp id="submission-message">
+                  <img src={Profile}></img>
+                  <p>Hi, {localData.name}, thank you for submitting the form. We will check and get back to you within 2 business days.</p>
+              </Styled.SubmissionComp>
+              <Button onClick={submitAnotherForm} id="form-another-submission-button">SUBMIT ANOTHER</Button>
+            </Flex>))
+                )}
       </Styled.FormContentDiv>
     </Container>
   )
