@@ -12,6 +12,7 @@ function App () {
     updateUserData,
     confirmForm,
     backToPreviousStep,
+    firstStep,
     isLoading
   } = useContext(FormContext)
 
@@ -25,6 +26,7 @@ function App () {
         userData={userData}
         confirmForm={confirmForm}
         backToPreviousStep={backToPreviousStep}
+        firstStep={firstStep}
       />
     </div>
   )

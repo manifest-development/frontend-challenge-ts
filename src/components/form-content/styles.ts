@@ -32,3 +32,19 @@ export const LineParagraph = styled.p`
     font-weight: 600;
   }
 `
+
+export const TextBox = styled.p`
+  background: #989E8D;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  font-family: Gill Sans;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;  
+  text-align: left;
+  width: fit-content
+  }
+`
